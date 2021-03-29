@@ -59,4 +59,4 @@ write.csv(df2, "./smartphone_data_set_tidy.csv")
 av_each_variable <- melt(df2, id = c('subject', 'activity'))
 
 #write second table
-write.csv(av_each_variable, "./average_of_each_variable_by_subject.csv")
+write.table(av_each_variable, "./average_of_each_variable_by_subject.txt, row.name= FALSE")

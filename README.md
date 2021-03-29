@@ -9,4 +9,4 @@ Use the run_analysis.R script to
 5) Label columns with descriptive and readable variable names
 6) Output a tidy data set as a CSV "smartphone_data_set_tidy.csv"
 7) Create a second, independent tidy data set with the average of each variable for each activity and each subject.
-8) Output this second dataset as a CSV "average_of_each_variable_by_subject.csv""
+8) Output this second dataset as a text file "average_of_each_variable_by_subject.txt""
