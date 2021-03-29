@@ -53,10 +53,10 @@ clean_labels <- gsub('\\-|\\(|\\)', '', as.character(requiredFeatures))
 colnames(df2) <- clean_labels
 
 #output tidy data set
-write.csv(df2, "./data/smartphone_data_set_tidy.csv")
+write.csv(df2, "./smartphone_data_set_tidy.csv")
 
 #melt data to produce second table containing average of each variable for each activiy & subject
 av_each_variable <- melt(df2, id = c('subject', 'activity'))
 
 #write second table
-write.csv(av_each_variable, "./data/average_of_each_variable_by_subject.csv")
+write.csv(av_each_variable, "./average_of_each_variable_by_subject.csv")
