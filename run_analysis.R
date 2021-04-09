@@ -2,6 +2,7 @@
 library(downloader)
 library(data.table)
 library(utils)
+library(dplyr)
 
 #download, unzip and import file
 src= ("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip")
@@ -53,10 +54,12 @@ clean_labels <- gsub('\\-|\\(|\\)', '', as.character(requiredFeatures))
 colnames(df2) <- clean_labels
 
 #output tidy data set
-write.csv(df2, "./smartphone_data_set_tidy.csv")
+write.csv(df2, file="./smartphone_data_set_tidy.csv",  row.names= FALSE)
 
 #melt data to produce second table containing average of each variable for each activiy & subject
-av_each_variable <- melt(df2, id = c('subject', 'activity'))
+av_each_variable <- aggregate(df2[,3:68],by=list(df2$activity,df2$subject),FUN=mean)
+colnames(av_each_variable)[1] <- 'Activity'
+colnames(av_each_variable)[2] <- 'Subject'
 
 #write second table
-write.table(av_each_variable, "./average_of_each_variable_by_subject.txt", row.name= FALSE)
+write.table(av_each_variable, "./average_of_each_variable_by_subject.txt")
